@@ -1,9 +1,9 @@
-package br.com.Happeing;
+package br.com.Happeing.models;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -18,18 +18,16 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
     private String local;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date data;
+    private Timestamp data;
 
     @ManyToOne
     @JoinColumn(name = "organizador_id")
-    private Usuario organizador;
+    private Organizador organizador;
 
     @ManyToMany
     @JoinTable(

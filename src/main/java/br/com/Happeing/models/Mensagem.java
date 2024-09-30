@@ -1,4 +1,4 @@
-package br.com.Happeing;
+package br.com.Happeing.models;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,4 +1,4 @@
-package br.com.Happeing;
+package br.com.Happeing.models;
 
 
 import jakarta.persistence.*;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class GrupoMensagem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
