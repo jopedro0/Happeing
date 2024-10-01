@@ -6,20 +6,18 @@ import lombok.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-@Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
+@Entity
+
 @Table(name = "eventos")
 
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
-
     private String local;
 
     @Temporal(TemporalType.TIMESTAMP)
