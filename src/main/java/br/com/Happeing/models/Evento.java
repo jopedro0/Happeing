@@ -18,7 +18,8 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String local;
+    @Embedded
+    private Endereco endereco;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp data;

@@ -18,4 +18,6 @@ public class Organizador {
     private String cnpj;
     private String nome;
     private String email;
+    private String telefone;
+
 }
