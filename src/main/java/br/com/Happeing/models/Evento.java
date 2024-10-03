@@ -18,6 +18,7 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
     @Embedded
     private Endereco endereco;
 

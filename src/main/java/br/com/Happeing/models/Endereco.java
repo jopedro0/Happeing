@@ -1,13 +1,14 @@
 package br.com.Happeing.models;
 
 
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@MappedSuperclass
+@Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter@Setter
