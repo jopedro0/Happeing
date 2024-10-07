@@ -19,7 +19,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public Usuario findById(String id){
+    public Usuario findById(Long id){
         var aux = usuarioRepository.findById(id);
         Usuario usuario = null;
         if(aux.isPresent()){
@@ -30,11 +30,11 @@ public class UsuarioService {
     }
 
 
-    public void delete(String id){
+    public void delete(Long id){
         usuarioRepository.deleteById(id);
     }
 
-    public Usuario update(Usuario usuario, String id){
+    public Usuario update(Usuario usuario, Long id){
         var aux = findById(id);
         if (usuario.getId() != null){
             aux.setId(usuario.getId());
