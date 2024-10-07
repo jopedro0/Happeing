@@ -24,6 +24,7 @@ public class Evento {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp data;
 
+
     @ManyToOne
     @JoinColumn(name = "organizador_id")
     private Organizador organizador;
