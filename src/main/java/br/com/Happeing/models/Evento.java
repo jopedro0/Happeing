@@ -1,9 +1,11 @@
 package br.com.Happeing.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,8 +24,8 @@ public class Evento {
     @Embedded
     private Endereco endereco;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp data;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataEvento;
 
 
     @ManyToOne

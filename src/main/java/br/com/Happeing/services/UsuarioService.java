@@ -42,6 +42,9 @@ public class UsuarioService {
         if (usuario.getNome() != null){
             aux.setNome(usuario.getNome());
         }
+        if (usuario.getEmail() != null){
+            aux.setEmail(usuario.getEmail());
+        }
         return usuarioRepository.save(aux);
     }
 
