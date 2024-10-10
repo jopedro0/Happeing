@@ -1,6 +1,6 @@
 package br.com.Happeing.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,9 +10,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Data
 @Entity
-
 @Table(name = "eventos")
 
 public class Evento {
@@ -24,7 +23,7 @@ public class Evento {
     @Embedded
     private Endereco endereco;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Temporal(TemporalType.DATE)
     private LocalDateTime dataEvento;
 
 

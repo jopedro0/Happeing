@@ -2,16 +2,13 @@ package br.com.Happeing.models;
 
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter@Setter
+@Data
 public class Endereco {
     private String cep;
     private String rua;

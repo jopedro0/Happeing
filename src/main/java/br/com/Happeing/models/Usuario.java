@@ -6,7 +6,7 @@ import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Data
 @Entity
 @Table(name = "usuarios")
 
@@ -15,5 +15,8 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Nome;
+    @Column(unique = true)
     private String email;
+    @Embedded
+    private Endereco endereco;
 }
