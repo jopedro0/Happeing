@@ -15,16 +15,24 @@ public class OrganizadorService {
     }
 
     public Organizador save(Organizador organizador){
+        if(organizadorRepository.existsById(organizador.getCnpj())) {
+            throw new RuntimeException("cnpj já em uso");
+        }
+        if(organizador.getNome() == null){
+            throw new RuntimeException("O nome esta vazio");
+        }
+        if (organizadorRepository.existsByEmail(organizador.getEmail())){
+            throw new RuntimeException("Email já em uso");
+        }
         return organizadorRepository.save(organizador);
     }
 
     public Organizador findById(String cnpj){
         var aux = organizadorRepository.findById(cnpj);
-        Organizador organizador = null;
-        if (aux.isPresent()){
-            organizador = aux.get();
+        if (aux.isEmpty()){
+            throw new RuntimeException("Não existe um organizador cadastrada com este cnpj");
         }
-        return organizador;
+        return aux.get();
     }
 
     public void delete(String id){
@@ -33,14 +41,14 @@ public class OrganizadorService {
 
     public Organizador update(Organizador organizador, String cnpj){
         var aux = findById(cnpj);
-        if (organizador.getCnpj() != null){
-            aux.setCnpj(organizador.getCnpj());
-        }
         if (organizador.getNome() != null){
             aux.setNome(organizador.getNome());
         }
         if (organizador.getEmail() != null){
             aux.setEmail(organizador.getEmail());
+        }
+        if (organizador.getTelefone() != null){
+            aux.setTelefone(organizador.getTelefone());
         }
         return organizadorRepository.save(aux);
     }

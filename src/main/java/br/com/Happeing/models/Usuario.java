@@ -3,6 +3,8 @@ package br.com.Happeing.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,4 +21,8 @@ public class Usuario {
     private String email;
     @Embedded
     private Endereco endereco;
+    @Temporal(TemporalType.DATE)
+    private LocalDateTime dataDeNascimento;
+
+
 }

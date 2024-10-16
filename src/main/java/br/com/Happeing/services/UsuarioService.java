@@ -16,16 +16,21 @@ public class UsuarioService {
     }
 
     public Usuario save(Usuario usuario){
+        if (usuarioRepository.existsByEmail(usuario.getEmail())){
+            throw new RuntimeException("Email já cadastrado");
+        }
+        if(usuario.getNome() == null){
+            throw new RuntimeException("O nome está vazio");
+        }
         return usuarioRepository.save(usuario);
     }
 
     public Usuario findById(Long id){
         var aux = usuarioRepository.findById(id);
-        Usuario usuario = null;
-        if(aux.isPresent()){
-            usuario = aux.get();
+        if(aux.isEmpty()){
+            throw new RuntimeException("Esse usuário não existe ");
         }
-        return usuario;
+        return aux.get();
 
     }
 
@@ -36,14 +41,11 @@ public class UsuarioService {
 
     public Usuario update(Usuario usuario, Long id){
         var aux = findById(id);
-        if (usuario.getId() != null){
-            aux.setId(usuario.getId());
-        }
         if (usuario.getNome() != null){
             aux.setNome(usuario.getNome());
         }
-        if (usuario.getEmail() != null){
-            aux.setEmail(usuario.getEmail());
+        if(usuario.getEndereco() != null) {
+            aux.setEndereco(usuario.getEndereco());
         }
         return usuarioRepository.save(aux);
     }

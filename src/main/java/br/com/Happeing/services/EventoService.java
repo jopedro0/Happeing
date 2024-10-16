@@ -16,16 +16,24 @@ public class EventoService {
     }
 
     public Evento save(Evento evento){
+        if(evento.getNome() == null){
+            throw new RuntimeException("evento sem nome definido");
+        }
+        if (evento.getDataEvento() == null){
+            throw new RuntimeException("evento sem data definida");
+        }
+        if (evento.getEndereco() == null){
+            throw new RuntimeException("evento sem endereço definido");
+        }
         return eventoRepository.save(evento);
     }
 
     public Evento findById(Long id){
         var aux = eventoRepository.findById(id);
-        Evento evento = null;
-        if (aux.isPresent()){
-            evento = aux.get();
+        if (aux.isEmpty()){
+            throw new RuntimeException("esse evento não existe");
         }
-        return evento;
+        return aux.get();
     }
 
     public void delete(Long id){
@@ -34,11 +42,17 @@ public class EventoService {
 
     public Evento update(Evento evento, Long id){
         var aux = findById(id);
-        if (evento.getId() != null){
-            aux.setId(evento.getId());
+        if ((evento.getEndereco() != null)){
+            aux.setEndereco(evento.getEndereco());
         }
         if(evento.getDataEvento() != null){
             aux.setDataEvento(evento.getDataEvento());
+        }
+        if(evento.getNome() != null){
+            aux.setNome(evento.getNome());
+        }
+        if(evento.getOrganizador() != null){
+            aux.setOrganizador(evento.getOrganizador());
         }
         return eventoRepository.save(aux);
     }

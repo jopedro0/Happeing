@@ -19,13 +19,13 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String descricao;
 
     @Embedded
     private Endereco endereco;
 
     @Temporal(TemporalType.DATE)
     private LocalDateTime dataEvento;
-
 
     @ManyToOne
     @JoinColumn(name = "organizador_id")
