@@ -27,7 +27,7 @@ public class OrganizadorService {
         return organizadorRepository.save(organizador);
     }
 
-    public Organizador findById(String cnpj){
+    public Organizador findByCnpj(String cnpj){
         var aux = organizadorRepository.findById(cnpj);
         if (aux.isEmpty()){
             throw new RuntimeException("Não existe um organizador cadastrada com este cnpj");
@@ -40,7 +40,7 @@ public class OrganizadorService {
     }
 
     public Organizador update(Organizador organizador, String cnpj){
-        var aux = findById(cnpj);
+        var aux = findByCnpj(cnpj);
         if (organizador.getNome() != null){
             aux.setNome(organizador.getNome());
         }
